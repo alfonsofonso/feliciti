@@ -1,0 +1,68 @@
+html,body{
+	left: 0;
+	top:0;
+	margin: 0;
+	
+    height: 99%;
+	text-align:center;
+	background-image:url(http://www.lalluvia.com/bHappy/imgs/fondo.jpg);
+	background-color: #000000;
+	background-repeat: no-repeat;
+	
+}
+#map-canvas{
+	height: 90%;
+	
+}
+
+#por-que{
+	display: none;
+	text-align: right;
+}
+#por{
+	width: 99%;
+	height: 35%;
+	font-size: 38px;
+}
+input{
+	font-size: 38px;
+}
+
+
+.myButton{
+	
+	border-radius: 10px;
+	padding: 10px;
+	font-family: Arial;
+	font-size: 30px;
+	font-style: bold;
+	color: #fdfdfd;
+	background-color: #11ff22;
+	border:0px;
+	right: 10px;
+	height: 10%;
+	margin: 2px;
+
+}
+
+
+#containerHappy{
+	position:absolute;
+	right: 30px;
+	margin:10px;
+	text-align:right;
+	top:30px;
+}
+#containerUngry{
+	position:absolute;
+	right: 30px;
+	bottom:30px;
+	margin:10px;
+	text-align:right;
+}
+
+
+
+
+
+
