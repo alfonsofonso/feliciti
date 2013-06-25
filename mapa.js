@@ -136,7 +136,7 @@ function parseado(){
        
         testObject.save(
             {prueba: navigator.userAgent, coment:comentario, posicion:posicion, feliz:feliz, fecha:fecha },
-            {success: parseado(), error: function(model, error) {console.log("conexion fallida");alert("fallida")} });
+            {success: parseado(), error: function(model, error) {console.log("conexion fallida");alert("fallida :(")} });
 
 
     }
@@ -148,7 +148,7 @@ function limpia(){
 
 
 function mapea() {///////////////////////////////////////////////////////////////////////// mapea 
-    alert("mapeando");
+  
       //detectBrowser();
     comentario= $("#por").val();
     console.log("comment: "+comentario);
