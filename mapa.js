@@ -19,10 +19,10 @@ function detectBrowser() {
 
     if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
         mapdiv.style.width = '100%';
-        mapdiv.style.height = '90%';
+        mapdiv.style.height = '100%';
     } else {
         mapdiv.style.width = '100%';
-        mapdiv.style.height = '90%';
+        mapdiv.style.height = '100%';
     }
 
 }
@@ -148,7 +148,7 @@ function limpia(){
 
 
 function mapea() {///////////////////////////////////////////////////////////////////////// mapea 
-    console.log("mapeando");
+    alert("mapeando");
       //detectBrowser();
     comentario= $("#por").val();
     console.log("comment: "+comentario);
@@ -167,7 +167,7 @@ function mapea() {//////////////////////////////////////////////////////////////
     if(navigator.geolocation) {
 
         console.log("Browser Si");
-        fecha=new Date();
+            fecha=new Date();
 
         navigator.geolocation.getCurrentPosition(function(position) {
             var pos = new google.maps.LatLng(position.coords.latitude,
