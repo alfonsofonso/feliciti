@@ -10,6 +10,7 @@ var comentario="B)";
 var feliz=true;
 var posicion;
 var infoW;
+var fecha;
 
 
 function detectBrowser() {
@@ -18,10 +19,10 @@ function detectBrowser() {
 
     if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
         mapdiv.style.width = '100%';
-        mapdiv.style.height = '100%';
+        mapdiv.style.height = '90%';
     } else {
         mapdiv.style.width = '100%';
-        mapdiv.style.height = '100%';
+        mapdiv.style.height = '90%';
     }
 
 }
@@ -65,14 +66,15 @@ function porquee(){
         detectBrowser();
         $("#containerHappy").click(soyFeliz);
         $("#containerUngry").click(soyInfeliz);
-        $("#map-canvas").css("height","100%");
+        $("#map-canvas").css("height","90%");
 
     }
 
 
-function ponSmiley(c,p,h){
+function ponSmiley(c,p,h,fechada){
 
-    var infoWindowOptions = {  content: c   };
+
+    var infoWindowOptions = {  content: c + "<br>" + String(fechada).substring(0,String(fechada).indexOf("GMT"))  };
 
     var  infoWindow = new google.maps.InfoWindow(infoWindowOptions);
 
@@ -105,7 +107,7 @@ function parseado(){
 
     var todos = Parse.Object.extend("TestObject");
     var query = new Parse.Query(todos);
-    query.lim
+ //   query.lim
     query.descending('createdAt');
 
     query.find({
@@ -113,8 +115,8 @@ function parseado(){
 
            for(var i=0;i<results.length;i++){
                var object = results[i];
-               console.log(object.id + ' - ' + object.get('feliz'));
-                ponSmiley(object.get("coment"),object.get("posicion"),object.get("feliz"));
+           
+                ponSmiley(object.get("coment"), object.get("posicion"), object.get("feliz"), object.get("fecha"));
 
            }
         },
@@ -131,9 +133,9 @@ function parseado(){
 
         var TestObject = Parse.Object.extend("TestObject");
         var testObject = new TestObject();
-
+       
         testObject.save(
-            {prueba: navigator.userAgent,coment:comentario,posicion:posicion,feliz:feliz},
+            {prueba: navigator.userAgent, coment:comentario, posicion:posicion, feliz:feliz, fecha:fecha },
             {success: parseado(), error: function(model, error) {console.log("conexion fallida");alert("fallida")} });
 
 
@@ -144,7 +146,8 @@ function limpia(){
 }
 
 
-function mapea() {
+
+function mapea() {///////////////////////////////////////////////////////////////////////// mapea 
     console.log("mapeando");
       //detectBrowser();
     comentario= $("#por").val();
@@ -164,13 +167,14 @@ function mapea() {
     if(navigator.geolocation) {
 
         console.log("Browser Si");
+        fecha=new Date();
 
         navigator.geolocation.getCurrentPosition(function(position) {
             var pos = new google.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
-
+            console.log("fecha es: "+String(fecha).substring(0,String(fecha).indexOf("GMT")))
             var infoWindowOptions = {
-                content: comentario
+                content: comentario +"<br>"+ String(fecha).substring(0,String(fecha).indexOf("GMT"))//String(new Date()).substring(0,);
             };
 
             var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
