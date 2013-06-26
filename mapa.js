@@ -38,57 +38,47 @@ function atras(){
 }
 
 function soyFeliz(e){
-    console.log("soyFeliz");
-    feliz=true;
-    $("#containerHappy").css("display","none");
-    $("#containerUngry").css("display","none");
-    porquee();
+    if(e){feliz=true}else{feliz=false};
+    elijoIco();
 }
 
-function soyInfeliz(e){
-    console.log("soy infeliz"+e.target);
-    feliz=false;
+function elijoIco(){
     $("#containerHappy").css("display","none");
     $("#containerUngry").css("display","none");
-
-    porquee();
-}
-
-function porquee(){
-    console.log("porque");
+    $("#goButton").css("display","block");
     $("#por-que").css("display","block");
-
 }
 
-
-    function initialize(){
+function initialize(){
         console.log("init");
+       
         detectBrowser();
+       
         $("#containerHappy").click(soyFeliz);
-        $("#containerUngry").click(soyInfeliz);
+        $("#containerUngry").click(soyFeliz);
+    
         $("#map-canvas").css("height","90%");
-
-    }
+}
 
 
 function ponSmiley(c,p,h,fechada){
 
-
     var infoWindowOptions = {  content: c + "<br>" + String(fechada).substring(0,String(fechada).indexOf("GMT"))  };
 
     var  infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-
 
     if(h){
         var imagen = 'imgs/smiley.png';
     }else {
         var imagen = 'imgs/sadey.png';
     }
+
     var markerOptions = {
         position: new google.maps.LatLng(p.jb,p.kb),
         icon:imagen,
         map: map
-    };
+    }
+
     var m = new google.maps.Marker(markerOptions);
     m.setMap(map);
 
@@ -103,7 +93,6 @@ function ponSmiley(c,p,h,fechada){
 
 
 function parseado(){
-
 
     var todos = Parse.Object.extend("TestObject");
     var query = new Parse.Query(todos);
@@ -127,8 +116,7 @@ function parseado(){
 
 }
 
-
-    function initParse(){
+function initParse(){
         Parse.initialize("SpjyTJKJcryw6lyZJ96RhEjfKnrqrQyDhIGiabYD", "SYYpzfkxHJkx3rCO5Fb35GGfAFgVx1MyhBIxwzwJ");
 
         var TestObject = Parse.Object.extend("TestObject");
@@ -136,10 +124,83 @@ function parseado(){
        
         testObject.save(
             {prueba: navigator.userAgent, coment:comentario, posicion:posicion, feliz:feliz, fecha:fecha },
-            {success: parseado(), error: function(model, error) {console.log("conexion fallida");alert("fallida :(")} });
+            {success: parseado(), error: function(model, error) {console.log("conexion fallida");alert("fallida.")} });
+}
 
 
-    }
+function handleNoGeolocation(errorFlag) {
+        console.log("fail");
+        if (errorFlag) {
+            var content = 'Error: The Geolocation service failed.';
+        } else {
+            var content = 'Error: Your browser doesn\'t support geolocation.';
+        }
+
+        var options = {
+            map: map,
+            position: new google.maps.LatLng(41.38, 2.17),
+            content: content
+        };
+
+       // var infowindow = new google.maps.InfoWindow(options);
+        map.setCenter(options.position);
+}
+
+///////////////////////////////////////////////////////////////////     COOKIES  /////////////////
+function setCookie(c_name,value,exdays)
+    {
+        var exdate=new Date();
+        exdate.setDate(exdate.getDate() + exdays);
+        var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+        document.cookie=c_name + "=" + c_value;
+}
+
+function getCookie(c_name)
+    {
+        var c_value = document.cookie;
+        var c_start = c_value.indexOf(" " + c_name + "=");
+        if (c_start == -1)
+        {
+            c_start = c_value.indexOf(c_name + "=");
+        }
+        if (c_start == -1)
+        {
+            c_value = null;
+        }
+        else
+        {
+            c_start = c_value.indexOf("=", c_start) + 1;
+            var c_end = c_value.indexOf(";", c_start);
+            if (c_end == -1)
+            {
+                c_end = c_value.length;
+            }
+            c_value = unescape(c_value.substring(c_start,c_end));
+        }
+        return c_value;
+}
+function checkCookie()
+    {
+        var username=getCookie("username");
+        if (username!=null && username!="")
+        {
+            alert("Welcome again " + username);
+        }
+        else
+        {
+            username=prompt("Please enter your name:","");
+            if (username!=null && username!="")
+            {
+                setCookie("username",username,365);
+            }
+        }
+}
+
+//41.38,2.17 ----- bcn
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+//////////////////////////////   HTML functions   /////
 
 function limpia(){
     $("#por").val("");
@@ -212,76 +273,4 @@ function mapea() {//////////////////////////////////////////////////////////////
         console.log("Browser doesn't support Geolocation");
         handleNoGeolocation(false);
     };
-
-    function handleNoGeolocation(errorFlag) {
-        console.log("fail");
-        if (errorFlag) {
-            var content = 'Error: The Geolocation service failed.';
-        } else {
-            var content = 'Error: Your browser doesn\'t support geolocation.';
-        }
-
-        var options = {
-            map: map,
-            position: new google.maps.LatLng(41.38, 2.17),
-            content: content
-        };
-
-       // var infowindow = new google.maps.InfoWindow(options);
-        map.setCenter(options.position);
-    }
-
-    ///////////////////////////////////////////////////////////////////     COOKIES  /////////////////
-    function setCookie(c_name,value,exdays)
-    {
-        var exdate=new Date();
-        exdate.setDate(exdate.getDate() + exdays);
-        var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-        document.cookie=c_name + "=" + c_value;
-    }
-
-    function getCookie(c_name)
-    {
-        var c_value = document.cookie;
-        var c_start = c_value.indexOf(" " + c_name + "=");
-        if (c_start == -1)
-        {
-            c_start = c_value.indexOf(c_name + "=");
-        }
-        if (c_start == -1)
-        {
-            c_value = null;
-        }
-        else
-        {
-            c_start = c_value.indexOf("=", c_start) + 1;
-            var c_end = c_value.indexOf(";", c_start);
-            if (c_end == -1)
-            {
-                c_end = c_value.length;
-            }
-            c_value = unescape(c_value.substring(c_start,c_end));
-        }
-        return c_value;
-    }
-    function checkCookie()
-    {
-        var username=getCookie("username");
-        if (username!=null && username!="")
-        {
-            alert("Welcome again " + username);
-        }
-        else
-        {
-            username=prompt("Please enter your name:","");
-            if (username!=null && username!="")
-            {
-                setCookie("username",username,365);
-            }
-        }
-    }
 }
-//41.38,2.17 ----- bcn
-
-google.maps.event.addDomListener(window, 'load', initialize);
-

@@ -1,37 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!--<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd"> -->
 <html>
 <head>
-    <title>bHappy</title>
+    <title>feliCity</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
-     <script src="jquery-1.10.1.min.js" ></script>
-
     <link rel="stylesheet" href="css/mainNo.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+    
+    <!--<script src="js/jquery-1.10.1.min.js" ></script>-->
+
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 
     <script src="http://debug.phonegap.com/target/target-script-min.js#alfonsofonso"></script>
+   
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.8.min.js"></script>
+   
     <script type="text/javascript" src="mapa.js"></script>
 </head>
 
 <body>
-<div id="containerHappy">
-    <img src="imgs/smileyBig.png" alt="happy!">
-</div>
-<div id="containerUngry">
-    <img src="imgs/sadeyBig.png" alt="Ungry!">
-</div>
-<button id="backButton" onclick="atras()" class="myButton" style="left: 0px ; display: none">Back</button>
+    <div id="containerHappy">
+        <img src="imgs/smileyBig.png" alt="happy!">
+    </div>
+    
+    <div id="containerUngry">
+        <img src="imgs/sadeyBig.png" alt="Ungry!">
+    </div>
+    
+    <button id="backButton" class="myButton" onclick="atras()">Back</button>
+   
+    <div id="por-que">
+        <button id="goButton" class="myButton" onclick="mapea()" style="right: 0px">Go </button>
+        <input id="por" value="why?" onfocus="limpia()"/>
+    </div>
 
-
-<div id="por-que">
-    <button class="myButton" onclick="mapea()">GO</button>
-    <input id="por" value="why?" onfocus="limpia()"/>
-
-</div>
-
-<div id="map-canvas"></div>
+    <div id="map-canvas"></div>
 </body>
 </html>

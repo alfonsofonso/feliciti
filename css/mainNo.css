@@ -11,6 +11,7 @@ html,body{
 	
 }
 #map-canvas{
+	display: none;
 	height: 90%;
 	
 }
@@ -19,32 +20,39 @@ html,body{
 	display: none;
 	text-align: right;
 }
-#por{
-	width: 99%;
-	height: 35%;
-	font-size: 38px;
-}
-input{
-	font-size: 38px;
-}
 
+#por{
+	border-width: 0px;
+	width: 100%;
+	height: 25%;
+	font-size: 38px;
+	font-family: cursive;	
+	background-color: #0ce5ff;
+}
 
 .myButton{
-	
-	border-radius: 10px;
+	display: none;
 	padding: 10px;
-	font-family: Arial;
+	font-family: cursive;
 	font-size: 30px;
 	font-style: bold;
-	color: #fdfdfd;
-	background-color: #11ff22;
+	color: #0ce5ff;
+	background-color: #fdfdfd;
 	border:0px;
-	right: 10px;
+	width: 90px;
 	height: 10%;
 	margin: 2px;
 
 }
-
+#goButton{
+	position: absolute;
+	border-radius: 5px 35px 35px 5px;
+	right: 0px;
+	
+}
+#backButton{
+	border-radius: 30px 5px 0px 35px;
+}
 
 #containerHappy{
 	position:absolute;
