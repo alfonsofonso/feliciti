@@ -62,7 +62,7 @@ html,body{
 	border-radius: 0px 35px 35px 35px;
 	right: 0px;
 	z-index: 20;
-	display: inline;
+	display: none;
 	
 }
 #backButton{

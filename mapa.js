@@ -32,7 +32,7 @@ function atras(){
     $("#containerUngry").css("display","block");
     $("#map-canvas").css("display","none");
     map=null;
-    $("#por").val("why?");
+    $("#razones").val("why?");
     $("#backButton").css("display","none");
     $("#titular").css("display","block");
 }
@@ -45,7 +45,7 @@ function soyFeliz(e){
 function elijoIco(){
     $("#containerHappy").css("display","none");
     $("#containerUngry").css("display","none");
-    $("#goButton").css("display","block");
+   
     $("#por-que").css("display","block");
     $("#titular").css("display","none");
 }
@@ -155,13 +155,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
 //////////////////////////////   HTML functions   /////
 
 function limpia(){
-    $("#por").val("");
+    $("#razones").val("");
+    $("#goButton").css("display","inline")
 }
 
 
 function mapea() {///////////////////////////////////////////////////////////////////////// mapea   
       //detectBrowser();
-    comentario= $("#por").val();
+    comentario= $("#razones").val();
     console.log("comment: "+comentario);
     $("#por-que").css("display","none");
     $("#backButton").css("display","block");
