@@ -220,7 +220,7 @@ function mapea() {//////////////////////////////////////////////////////////////
     };
 }
 
-function entra(e){
+/*function entra(e){
     var keycode = null;
    
     if (e.keyCode) {keycode = e.keyCode}
@@ -233,4 +233,4 @@ function entra(e){
     }
     
     
-}
+}*/
