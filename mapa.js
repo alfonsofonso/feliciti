@@ -147,55 +147,6 @@ function handleNoGeolocation(errorFlag) {
         map.setCenter(options.position);
 }
 
-///////////////////////////////////////////////////////////////////     COOKIES  /////////////////
-function setCookie(c_name,value,exdays)
-    {
-        var exdate=new Date();
-        exdate.setDate(exdate.getDate() + exdays);
-        var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-        document.cookie=c_name + "=" + c_value;
-}
-
-function getCookie(c_name)
-    {
-        var c_value = document.cookie;
-        var c_start = c_value.indexOf(" " + c_name + "=");
-        if (c_start == -1)
-        {
-            c_start = c_value.indexOf(c_name + "=");
-        }
-        if (c_start == -1)
-        {
-            c_value = null;
-        }
-        else
-        {
-            c_start = c_value.indexOf("=", c_start) + 1;
-            var c_end = c_value.indexOf(";", c_start);
-            if (c_end == -1)
-            {
-                c_end = c_value.length;
-            }
-            c_value = unescape(c_value.substring(c_start,c_end));
-        }
-        return c_value;
-}
-function checkCookie()
-    {
-        var username=getCookie("username");
-        if (username!=null && username!="")
-        {
-            alert("Welcome again " + username);
-        }
-        else
-        {
-            username=prompt("Please enter your name:","");
-            if (username!=null && username!="")
-            {
-                setCookie("username",username,365);
-            }
-        }
-}
 
 //41.38,2.17 ----- bcn
 
@@ -208,9 +159,7 @@ function limpia(){
 }
 
 
-
-function mapea() {///////////////////////////////////////////////////////////////////////// mapea 
-  
+function mapea() {///////////////////////////////////////////////////////////////////////// mapea   
       //detectBrowser();
     comentario= $("#por").val();
     console.log("comment: "+comentario);
@@ -218,10 +167,7 @@ function mapea() {//////////////////////////////////////////////////////////////
     $("#backButton").css("display","block");
     $("#map-canvas").css("display","block");
 
-    var mapOptions = {
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+    var mapOptions = {zoom: 13, mapTypeId: google.maps.MapTypeId.ROADMAP};
 
     map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
@@ -232,17 +178,16 @@ function mapea() {//////////////////////////////////////////////////////////////
             fecha=new Date();
 
         navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = new google.maps.LatLng(position.coords.latitude,
-                position.coords.longitude);
-            console.log("fecha es: "+String(fecha).substring(0,String(fecha).indexOf("GMT")))
+           
+            var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            
             var infoWindowOptions = {
                 content: comentario +"<br>"+ String(fecha).substring(0,String(fecha).indexOf("GMT"))//String(new Date()).substring(0,);
             };
-
             var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
 
-            
             map.setCenter(pos);
+            
             if(feliz){
                 var imagen = 'imgs/smiley.png';
             }else {
@@ -266,7 +211,6 @@ function mapea() {//////////////////////////////////////////////////////////////
            // initParse();
             google.maps.event.addListenerOnce(map, 'idle',initParse );
 
-
         }, function() {
             handleNoGeolocation(true);
         });
@@ -278,13 +222,15 @@ function mapea() {//////////////////////////////////////////////////////////////
 
 function entra(e){
     var keycode = null;
-    if (!e) {var e = window.event}
+   
     if (e.keyCode) {keycode = e.keyCode}
-    else if (e.which) {keycode = e.which};
-    
-    if(keycode==13){
-        mapea();
+    else if (e.which) {keycode = e.which}
+    else if (!e) {var e = window.event}
+    if(keycode==13){// si pulsas enter
+        var value = $("#razones").val();
+        var newValue = value + " \n";
+        $("#razones").val(newValue);
     }
-        console.log("mapearé si das enter")
+    
     
 }

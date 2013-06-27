@@ -36,38 +36,37 @@ html,body{
 	z-index: 6;
 }
 
-#por{
+#razones{
 	border-width: 0px;
 	width: 100%;
 	height: 25%;
 	font-size: 38px;
-	font-family: cursive;	
+	font-family: 'Lily Script One',cursive;	
 	background-color: #0ce5ff;
 }
 
 .myButton{
 	display: none;
 	padding: 10px;
-	font-family: cursive;
+	font-family: 'Lily Script One',cursive;
 	font-size: 30px;
 	font-style: bold;
 	color: #0ce5ff;
 	background-color: #fdfdfd;
 	border:0px;
 	width: 90px;
-	
-	margin: 2px;
 
 }
 #goButton{
-	position: absolute;
-	border-radius: 5px 35px 35px 5px;
+	
+	border-radius: 0px 35px 35px 35px;
 	right: 0px;
 	z-index: 20;
+	display: inline;
 	
 }
 #backButton{
-	border-radius: 30px 5px 0px 35px;
+	border-radius: 35px 35px 0px 35px;
 }
 
 #containerHappy{
