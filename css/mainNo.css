@@ -10,6 +10,20 @@ html,body{
 	background-repeat: no-repeat;
 	
 }
+#titular{
+	position: absolute;
+	z-index:0;
+	font-family: 'Lily Script One', cursive;
+	font-size: 400%;
+	
+	line-height: 100%;
+	bottom:10%;
+	left: 2%;
+	width: 60%;
+	color: #0ce5ff;
+	text-align: left;
+}
+
 #map-canvas{
 	display: none;
 	height: 90%;
@@ -19,6 +33,7 @@ html,body{
 #por-que{
 	display: none;
 	text-align: right;
+	z-index: 6;
 }
 
 #por{
@@ -40,7 +55,7 @@ html,body{
 	background-color: #fdfdfd;
 	border:0px;
 	width: 90px;
-	height: 10%;
+	
 	margin: 2px;
 
 }
@@ -48,6 +63,7 @@ html,body{
 	position: absolute;
 	border-radius: 5px 35px 35px 5px;
 	right: 0px;
+	z-index: 20;
 	
 }
 #backButton{
@@ -55,20 +71,32 @@ html,body{
 }
 
 #containerHappy{
+	z-index:8;
 	position:absolute;
-	right: 30px;
+	right: 10%;
 	margin:10px;
 	text-align:right;
-	top:30px;
+	top:10%;
+	width: 20%;
+	height: 20%;
+
 }
 #containerUngry{
+	z-index:8;
 	position:absolute;
-	right: 30px;
-	bottom:30px;
+	right: 10%;
+	bottom:10%;
 	margin:10px;
+
 	text-align:right;
+	width: 20%;
+	height: 20%;
 }
 
+.smiley{
+	
+	height: 100%;
+}
 
 
 

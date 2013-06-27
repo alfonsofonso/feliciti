@@ -34,7 +34,7 @@ function atras(){
     map=null;
     $("#por").val("why?");
     $("#backButton").css("display","none");
-
+    $("#titular").css("display","block");
 }
 
 function soyFeliz(e){
@@ -47,6 +47,7 @@ function elijoIco(){
     $("#containerUngry").css("display","none");
     $("#goButton").css("display","block");
     $("#por-que").css("display","block");
+    $("#titular").css("display","none");
 }
 
 function initialize(){
@@ -273,4 +274,17 @@ function mapea() {//////////////////////////////////////////////////////////////
         console.log("Browser doesn't support Geolocation");
         handleNoGeolocation(false);
     };
+}
+
+function entra(e){
+    var keycode = null;
+    if (!e) {var e = window.event}
+    if (e.keyCode) {keycode = e.keyCode}
+    else if (e.which) {keycode = e.which};
+    
+    if(keycode==13){
+        mapea();
+    }
+        console.log("mapearé si das enter")
+    
 }
