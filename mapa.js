@@ -165,6 +165,7 @@ function mapea() {//////////////////////////////////////////////////////////////
     comentario= $("#razones").val();
     console.log("comment: "+comentario);
     $("#por-que").css("display","none");
+    $("#goButton").css("display","none");
     $("#backButton").css("display","block");
     $("#map-canvas").css("display","block");
 
