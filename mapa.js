@@ -201,8 +201,14 @@ function mapea() {//////////////////////////////////////////////////////////////
                 animation:google.maps.Animation.BOUNCE,
                 map: map
             };
+
             var marker = new google.maps.Marker(markerOptions);
             marker.setMap(map);
+           
+            var aGray=[{stylers:[{saturation:100}]}];
+            var grayStyle=new google.maps.StyledMapType(aGray,{name:"Gray"});
+            map.mapTypes.set("gray",grayStyle);
+            map.setMapTypeId("gray"); 
 
             google.maps.event.addListener(marker,'click',function(e){
                if(infoW){ infoW.close();}
