@@ -34,6 +34,7 @@ function atras(){
     map=null;
     $("#razones").val("why?");
     $("#backButton").css("display","none");
+
     $("#titular").css("display","block");
 }
 
@@ -47,6 +48,8 @@ function elijoIco(){
     $("#containerUngry").css("display","none");
    
     $("#por-que").css("display","block");
+    $("#razones").focus();
+    $("#goButton").css("display","inline")
     $("#titular").css("display","none");
 }
 
@@ -64,7 +67,7 @@ function initialize(){
 
 function ponSmiley(c,p,h,fechada){
 
-    var infoWindowOptions = {  content: c + "<br>" + String(fechada).substring(0,String(fechada).indexOf("GMT"))  };
+    var infoWindowOptions = {  content: c + "<br><br>" + String(fechada).substring(0,String(fechada).indexOf("GMT"))  };
 
     var  infoWindow = new google.maps.InfoWindow(infoWindowOptions);
 
@@ -155,8 +158,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
 //////////////////////////////   HTML functions   /////
 
 function limpia(){
+    console.log("limpioo letras")
     $("#razones").val("");
-    $("#goButton").css("display","inline")
+  
 }
 
 
@@ -184,7 +188,7 @@ function mapea() {//////////////////////////////////////////////////////////////
             var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             
             var infoWindowOptions = {
-                content: comentario +"<br>"+ String(fecha).substring(0,String(fecha).indexOf("GMT"))//String(new Date()).substring(0,);
+                content: comentario +"<br><br>"+ String(fecha).substring(0,String(fecha).indexOf("GMT"))//String(new Date()).substring(0,);
             };
             var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
 
@@ -209,6 +213,9 @@ function mapea() {//////////////////////////////////////////////////////////////
             var grayStyle=new google.maps.StyledMapType(aGray,{name:"Gray"});
             map.mapTypes.set("gray",grayStyle);
             map.setMapTypeId("gray"); 
+
+            infoWindow.open(map, marker);
+            infoW=infoWindow;
 
             google.maps.event.addListener(marker,'click',function(e){
                if(infoW){ infoW.close();}
