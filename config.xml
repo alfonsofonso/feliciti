@@ -3,8 +3,8 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.lalluvia.felicity"
-        version   = "1.8.2">
+        id        = "com.lalluvia.bHappy"
+        version   = "1.8.3">
 
     <name>feliCity</name>
 
