@@ -62,6 +62,8 @@ function initialize(){
         $("#containerUngry").click(soyFeliz);
     
         $("#map-canvas").css("height","90%");
+        
+        getWifiPoints();
 }
 
 
@@ -249,3 +251,15 @@ function mapea() {//////////////////////////////////////////////////////////////
     
     
 }*/
+
+function getWifiPoints(){
+    $get.('http://opendata.bcn.cat/opendata/download.aspx?id=6135', {}, function(xml){
+        $('Punt', xml).each(function(i){
+           x = $(this).find('Coords').find('X').text();
+           y = $(this).find('Coords').find('Y').text();
+           
+           consoleLog(x+' '+y);
+           alert('XXXXX: 'x+' YYYYYYY: '+y);
+        });
+    });
+}
