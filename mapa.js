@@ -253,13 +253,15 @@ function mapea() {//////////////////////////////////////////////////////////////
 }*/
 
 function getWifiPoints(){
-    $get.('http://opendata.bcn.cat/opendata/download.aspx?id=6135', {}, function(xml){
+     alert("busco wifi")
+    $get.('wifis.xml', {}, function(xml){
         $('Punt', xml).each(function(i){
-           x = $(this).find('Coords').find('X').text();
-           y = $(this).find('Coords').find('Y').text();
+           coords = $(this).find('Coords');
+           alert(coords)
+           y = $(coords).find('Coords').find('Y').text();
            
-           consoleLog(x+' '+y);
-           alert('XXXXX: 'x+' YYYYYYY: '+y);
+           consoleLog(coords+' '+y);
+           alert('coords '+coords+' YYYYYYY: '+y);
         });
     });
 }
